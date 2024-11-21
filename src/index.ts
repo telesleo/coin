@@ -1,3 +1,7 @@
-import Home from './interface/home';
+import app from './app';
 
-new Home();
+const PORT = 1300;
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
