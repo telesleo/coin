@@ -1,11 +1,17 @@
 export default class Account {
-  private name: string;
+  private address;
+  private privateKey;
 
-  constructor(name: string) {
-    this.name = name;
+  constructor(address: string, privateKey: string) {
+    this.address = address;
+    this.privateKey = privateKey;
   }
 
-  public getName() {
-    return this.name;
+  public getAdress() {
+    return this.address;
+  }
+
+  public getPrivateKey() {
+    return this.privateKey;
   }
 }

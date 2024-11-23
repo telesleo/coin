@@ -1,7 +1,7 @@
 {
   "name": "coin",
   "version": "1.0.0",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prestart": "tsc",
     "start": "node .",
@@ -14,14 +14,14 @@
   "devDependencies": {
     "@types/elliptic": "^6.4.18",
     "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@types/express": "^5.0.0",
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
     "crypto": "^1.0.1",
-    "elliptic": "^6.6.1",
-    "express": "^4.21.1"
+    "elliptic": "^6.6.1"
   }
 }
