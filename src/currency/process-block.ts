@@ -1,25 +1,10 @@
-import Block from "./block";
-import randomNumber from "../tools/randomNumber";
-
-const HASH_LENGTH = 64;
-const DIFFICULTY = 6;
-const difficultyClamped = Math.min(DIFFICULTY, HASH_LENGTH);
-const targetHash = [
-  ...new Array(difficultyClamped).fill("0"),
-  ...new Array(HASH_LENGTH - difficultyClamped).fill("f"),
-].join("");
-const targetHashNumber = BigInt(`0x${targetHash}`);
+import Block from "./elements/block";
+import getTargetHash from "../tools/get-target-hash";
+import "dotenv/config";
+import { DIFFICULTY } from "../currency/constants";
 
 export default function processBlock(previousBlock: string, sealer: string) {
   const block = new Block(previousBlock, sealer);
-  console.log("Processing block...");
-  while (true) {
-    block.setNonce(randomNumber());
-    const hash = block.hashFromBlock();
-    const hashNumber = BigInt(`0x${hash}`);
-    if (hashNumber < targetHashNumber) {
-      console.log(hash);
-      return;
-    }
-  }
+  const targetHash = getTargetHash(DIFFICULTY);
+  return block.process(targetHash);
 }
