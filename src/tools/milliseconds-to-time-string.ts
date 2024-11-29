@@ -1,16 +1,17 @@
 export default function millisecondsToTimeString(milliseconds: number) {
-  const hours = Math.floor(milliseconds / (1000 * 60 * 60));
-  const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+  const hours = Math.floor(milliseconds / 3600000);
+  const minutes = Math.floor((milliseconds % 3600000) / 60000);
+  const seconds = Math.floor((milliseconds % 60000) / 1000);
 
-  let timeString = "";
+  let time = [];
 
   if (hours > 0) {
-    timeString += `${hours}h ${minutes}m`;
-  } else if (minutes > 0) {
-    timeString += `${minutes}m `;
+    time.push(`${hours}h`);
   }
-  timeString += `${seconds}s `;
+  if (minutes > 0 || hours > 0) {
+    time.push(`${minutes}m`);
+  }
+  time.push(`${seconds}s`);
 
-  return timeString;
+  return time.join(" ");
 }

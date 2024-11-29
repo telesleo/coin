@@ -1,5 +1,5 @@
 import elliptic from "elliptic";
-import Account from "./elements/account";
+import Account from "./account";
 const EC = elliptic.ec;
 
 var ec = new EC("secp256k1");

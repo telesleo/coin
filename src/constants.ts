@@ -1,0 +1,4 @@
+const TARGET_HASH_SIZE = 64;
+const DIFFICULTY = 5;
+
+export { TARGET_HASH_SIZE, DIFFICULTY };
