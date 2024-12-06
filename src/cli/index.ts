@@ -6,6 +6,8 @@ import processBlockAction from "./actions/process-block";
 import createTransactionAction from "./actions/create-transaction";
 import clearAction from "./actions/clear";
 import exitAction from "./actions/exit";
+import connectToPeerAction from "./actions/connect-to-peer";
+import greetAction from "./actions/greet";
 
 const program = new Command();
 
@@ -22,18 +24,27 @@ program
 
 program
   .command("transaction")
+  .description("Create a new transaction")
   .argument("<privateKey>", "Private Key for signing the transaction")
   .argument("<sender>", "Address sending the value")
   .argument("<receiver>", "Address receiving the value")
   .argument("<value>", "Value to be sent")
-  .description("Create a new transaction")
   .action(createTransactionAction);
 
 program
   .command("process-block")
-  .argument("<selaer>", "Address sealing the block")
   .description("Process a block")
+  .argument("<selaer>", "Address sealing the block")
   .action(processBlockAction);
+
+program
+  .command("connect-to-peer")
+  .description("Connect to another peer")
+  .argument("<host>, Host of the other peer")
+  .argument("<port>, Port of the other peer")
+  .action(connectToPeerAction);
+
+program.command("greet").description("Greet peers").action(greetAction);
 
 program.command("clear").description("Clear the console").action(clearAction);
 
